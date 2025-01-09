@@ -1,20 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mathispeyre <mathispeyre@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/27 15:39:26 by mathispeyre       #+#    #+#             */
-/*   Updated: 2025/01/09 11:58:57 by mathispeyre      ###   ########.fr       */
+/*   Created: 2024/11/05 11:26:00 by mathispeyre       #+#    #+#             */
+/*   Updated: 2024/11/26 11:32:22 by mathispeyre      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
+#include "../libft.h"
 
-# include <unistd.h>
-# include <signal.h>
-# include "libft/libft.h"
+void	*ft_calloc(size_t count, size_t size)
+{
+	void	*result;
 
-#endif
+	if (count == 0 || size == 0)
+		return (malloc(0));
+	if (size != 0 && (count > ((size_t)-1) / size))
+		return (NULL);
+	result = (void *)malloc(size * count);
+	if (!result)
+		return (NULL);
+	if (result)
+		ft_bzero(result, size * count);
+	return (result);
+}

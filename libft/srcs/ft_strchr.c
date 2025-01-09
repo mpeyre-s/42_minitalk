@@ -1,20 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mathispeyre <mathispeyre@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/27 15:39:26 by mathispeyre       #+#    #+#             */
-/*   Updated: 2025/01/09 11:58:57 by mathispeyre      ###   ########.fr       */
+/*   Created: 2024/11/05 09:42:35 by mathispeyre       #+#    #+#             */
+/*   Updated: 2024/11/26 11:33:30 by mathispeyre      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
+#include "../libft.h"
 
-# include <unistd.h>
-# include <signal.h>
-# include "libft/libft.h"
+char	*ft_strchr(const char *s, int c)
+{
+	size_t	i;
 
-#endif
+	i = 0;
+	while (s[i])
+	{
+		if (s[i] == (char)c)
+			return ((char *)(s + i));
+		i++;
+	}
+	if (s[i] == (char)c)
+		return ((char *)(s + i));
+	return (NULL);
+}

@@ -1,20 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   printletters.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mathispeyre <mathispeyre@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/27 15:39:26 by mathispeyre       #+#    #+#             */
-/*   Updated: 2025/01/09 11:58:57 by mathispeyre      ###   ########.fr       */
+/*   Created: 2024/11/15 11:08:57 by mathispeyre       #+#    #+#             */
+/*   Updated: 2024/11/26 13:35:36 by mathispeyre      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
+#include "../../ft_printf.h"
 
-# include <unistd.h>
-# include <signal.h>
-# include "libft/libft.h"
+int	print_char(int c)
+{
+	write(1, &c, 1);
+	return (1);
+}
 
-#endif
+int	print_string(char *str)
+{
+	int	i;
+
+	i = 0;
+	if (!str)
+	{
+		write(1, "(null)", 6);
+		return (6);
+	}
+	while (str[i])
+	{
+		print_char(str[i]);
+		i++;
+	}
+	return (i);
+}
+
+int	print_percent(char c)
+{
+	return (print_char(c));
+}
